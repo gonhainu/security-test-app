@@ -25,25 +25,24 @@ const Question: React.FC<PropsType> = ({ className, item, nextIndex }) => {
   };
   return (
     <Box>
-      {!showAnswer ? (
-        <>
-          <div>{item.genre}</div>
-          <div>{item.text}</div>
-          <ButtonGroup>
-            <Button onClick={() => onClick("A01")} colorScheme="red">
-              根本的解決
-            </Button>
-            <Button onClick={() => onClick("A02")} colorScheme="yellow">
-              保険的解決
-            </Button>
-          </ButtonGroup>
-        </>
-      ) : (
-        <>
-          {judgement ? <p>正解</p> : <p>不正解</p>}
-          <Button onClick={() => onNext()}>次へ</Button>
-        </>
-      )}
+      <>
+        <div>{item.genre}</div>
+        <div>{item.text}</div>
+        <ButtonGroup>
+          <Button onClick={() => onClick("A01")} colorScheme="red">
+            根本的解決
+          </Button>
+          <Button onClick={() => onClick("A02")} colorScheme="yellow">
+            保険的解決
+          </Button>
+        </ButtonGroup>
+        {showAnswer && (
+          <>
+            {judgement ? <p>正解</p> : <p>不正解</p>}
+            <Button onClick={() => onNext()}>次へ</Button>
+          </>
+        )}
+      </>
     </Box>
   );
 };
